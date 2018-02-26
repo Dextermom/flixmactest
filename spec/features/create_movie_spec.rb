@@ -24,4 +24,9 @@ describe "Creating a new movie" do
 
     expect(page).to have_text('New Movie Title')
   end
+
+  fill_in "Cast", with: "The award-winning cast"
+fill_in "Director", with: "The ever-creative director"
+fill_in "Duration", with: "123 min"
+fill_in "Image file name", with: "movie.png"
 end

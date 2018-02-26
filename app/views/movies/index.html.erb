@@ -1,3 +1,4 @@
+<h1><%= pluralize(Movie.released.count, 'Movie') %>
 <% @movies.each do |movie| %>
   <article>
     <header>
@@ -31,5 +32,3 @@
     </table>
   </article>
 <% end %>
-
-<%= link_to("Add New Movie", new_movie_path) %>
