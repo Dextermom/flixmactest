@@ -22,7 +22,7 @@ describe "Viewing the list of movies" do
                           released_on: "2002-05-03")
     visit movies_url
 
-    expect(page).to have_text("4 Movies")
+    expect(page).to have_text("3 Movies")
     expect(page).to have_text(movie1.title)
     expect(page).to have_text(movie2.title)
     expect(page).to have_text(movie3.title)
@@ -31,5 +31,13 @@ describe "Viewing the list of movies" do
     expect(page).to have_text(movie1.released_on)
     expect(page).to have_text("$318,412,101.00")
   end
+
+  it "does not show a movie that hasn't yet been released" do
+  movie = Movie.create(movie_attributes(title: "Frog Town", released_on: 1.month.from_now))
+
+  visit movies_path
+
+  expect(page).not_to have_text(movie.title)
+end
 
 end
